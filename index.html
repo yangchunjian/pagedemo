@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title></title>
+    <script src="vue.js"></script>
+    <link href="pagination.css" rel="stylesheet" />
+    <script src="pagination.js"></script>
+</head>
+<body>
+    <div id="app">
+        <vue-pagination :cur.sync="cur" :all.sync="all" v-on:btn-click="listen"></vue-pagination>
+        <p>{{msg}}</p>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                cur: 1,
+                all: 100,
+                msg: ''
+            },
+            components: {
+                'vue-pagination': Vue.Pagination
+            },
+            methods: {
+                listen: function (data) {
+                    this.msg = '当前页码：' + data
+                }
+            }
+        })
+    </script>
+</body>
+</html>
